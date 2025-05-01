@@ -1,0 +1,81 @@
+@media (max-width: 640px) {
+    .hero-image {
+        margin-top: 20px;
+        max-width: 90%;
+    }
+    
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-section {
+        flex-direction: column;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-links {
+        justify-content: center;
+        margin: 20px 0;
+    }
+    
+    .client-logos {
+        justify-content: space-around;
+        gap: 20px;
+    }
+    
+    .client-logos i {
+        font-size: 2.5rem;
+    }
+
+    /* Header mobile */
+    .nav-desktop {
+        display: none;
+    }
+
+    /* Navigation mobile */
+    .mobile-menu {
+        display: block;
+    }
+
+    /* Form mobile */
+    .contact-form {
+        padding: 1rem;
+    }
+
+    /* Sections spacing */
+    .section-padding {
+        padding: 2rem 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-cols-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .text-4xl {
+        font-size: 1.875rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-cols-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+}
