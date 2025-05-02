@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Websidte - Creazione Siti Web e App</title>
+    <script>window.translations = {};</script>
+    <script src="js/translations.js"></script>
+    <script src="js/init.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/themes.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/mobile.css">
 </head>
@@ -17,10 +21,10 @@
             <div class="flex items-center">
                 <div class="logo mr-2">
                     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="20" cy="20" r="18" fill="#6b21a8"/>
-                        <path d="M20 8C13.3726 8 8 13.3726 8 20C8 26.6274 13.3726 32 20 32C26.6274 32 32 26.6274 32 20C32 13.3726 26.6274 8 20 8Z" stroke="#1e1b4b" stroke-width="4"/>
-                        <path d="M20 12C15.5817 12 12 15.5817 12 20C12 24.4183 15.5817 28 20 28C24.4183 28 28 24.4183 28 20C28 15.5817 24.4183 12 20 12Z" stroke="#1e1b4b" stroke-width="2"/>
-                        <path d="M20 16C18.3431 16 16 17.3431 16 20C16 22.6569 18.3431 24 20 24C22.6569 24 24 22.6569 24 20C24 17.3431 22.6569 16 20 16Z" fill="#1e1b4b"/>
+                        <circle cx="20" cy="20" r="18" fill="var(--accent-primary)"/>
+                        <path d="M20 8C13.3726 8 8 13.3726 8 20C8 26.6274 13.3726 32 20 32C26.6274 32 32 26.6274 32 20C32 13.3726 26.6274 8 20 8Z" stroke="var(--accent-secondary)" stroke-width="4"/>
+                        <path d="M20 12C15.5817 12 12 15.5817 12 20C12 24.4183 15.5817 28 20 28C24.4183 28 28 24.4183 28 20C28 15.5817 24.4183 12 20 12Z" stroke="var(--accent-secondary)" stroke-width="2"/>
+                        <path d="M20 16C18.3431 16 16 17.3431 16 20C16 22.6569 18.3431 24 20 24C22.6569 24 24 22.6569 24 20C24 17.3431 22.6569 16 20 16Z" fill="var(--accent-secondary)"/>
                         <path d="M20 12V8M20 32V28M8 20H12M28 20H32" stroke="#a855f7" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                 </div>
@@ -28,30 +32,55 @@
             </div>
             
             <!-- Desktop Nav -->
-            <nav class="hidden md:flex space-x-8">
-                <a href="#home" class="nav-link px-3 py-2">Home</a>
-                <a href="#services" class="nav-link px-3 py-2">Servizi</a>
-                <a href="#portfolio" class="nav-link px-3 py-2">Portfolio</a>
-                <a href="#about" class="nav-link px-3 py-2">Chi Siamo</a>
-                <a href="#contact" class="nav-link px-3 py-2">Contatti</a>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#home" class="nav-link px-3 py-2" data-translate="home">Home</a>
+                <a href="#services" class="nav-link px-3 py-2" data-translate="services">Servizi</a>
+                <a href="#portfolio" class="nav-link px-3 py-2" data-translate="portfolio">Portfolio</a>
+                <a href="#about" class="nav-link px-3 py-2" data-translate="about">Chi Siamo</a>
+                <a href="#contact" class="nav-link px-3 py-2" data-translate="contact">Contatti</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="lang-toggle" class="lang-toggle ml-4" aria-label="Toggle language">
+                    <img src="https://flagcdn.com/w20/it.png" alt="Italian" class="lang-icon" data-lang="it">
+                    <img src="https://flagcdn.com/w20/gb.png" alt="English" class="lang-icon" data-lang="en">
+                </button>
             </nav>
             
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="md:hidden text-purple-400 focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
+            <button id="mobile-menu-button" class="mobile-menu-button md:hidden px-3" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars text-2xl text-purple-600"></i>
             </button>
         </div>
         
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="mobile-menu md:hidden bg-gray-800">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col">
-                <a href="#home" class="nav-link px-3 py-2 block">Home</a>
-                <a href="#services" class="nav-link px-3 py-2 block">Servizi</a>
-                <a href="#portfolio" class="nav-link px-3 py-2 block">Portfolio</a>
-                <a href="#about" class="nav-link px-3 py-2 block">Chi Siamo</a>
-                <a href="#contact" class="nav-link px-3 py-2 block">Contatti</a>
+                <a href="#home" class="nav-link px-3 py-2 block" data-translate="home">Home</a>
+                <a href="#services" class="nav-link px-3 py-2 block" data-translate="services">Servizi</a>
+                <a href="#portfolio" class="nav-link px-3 py-2 block" data-translate="portfolio">Portfolio</a>
+                <a href="#about" class="nav-link px-3 py-2 block" data-translate="about">Chi Siamo</a>
+                <a href="#contact" class="nav-link px-3 py-2 block" data-translate="contact">Contatti</a>
+                <button id="theme-toggle-mobile" class="theme-toggle mx-3 mt-2" aria-label="Toggle theme">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="lang-toggle-mobile" class="lang-toggle mx-3 mt-2" aria-label="Toggle language">
+                    <img src="https://flagcdn.com/w20/it.png" alt="Italian" class="lang-icon" data-lang="it">
+                    <img src="https://flagcdn.com/w20/gb.png" alt="English" class="lang-icon" data-lang="en">
+                </button>
+                <div class="flex items-center justify-center w-full md:hidden">
+                    <div class="lang-toggle">
+                        <img src="images/it.png" alt="Italiano" class="lang-icon" data-lang="it" data-active="true">
+                        <img src="images/en.png" alt="English" class="lang-icon" data-lang="en" data-active="false">
+                    </div>
+                </div>
+                <div class="burger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </header>
@@ -60,18 +89,18 @@
     <section id="home" class="gradient-bg pt-32 pb-20 px-4">
         <div class="container mx-auto flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-10 md:mb-0">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                    <span class="bg-gradient-to-r from-purple-400 to-purple-200 bg-clip-text text-transparent">Siti Web</span> e <span class="bg-gradient-to-r from-purple-400 to-purple-200 bg-clip-text text-transparent">App</span> su misura per il tuo business
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight fade-in" data-translate="heroTitle">
+                    <span class="gradient-text" data-text="Websites">Websites</span> and <span class="gradient-text" data-text="Apps">Apps</span> tailored to your business
                 </h1>
-                <p class="text-lg md:text-xl text-purple-100 mb-8">
-                    Trasformiamo la tua presenza digitale con soluzioni personalizzate e innovative.
+                <p class="text-lg md:text-xl text-purple-100 mb-8 slide-in delay-200" data-translate="heroSubtitle">
+                    We transform your digital presence with customized and innovative solutions.
                 </p>
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="#contact" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 text-center">
-                        Richiedi un preventivo
+                    <a href="#contact" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 text-center" data-translate="requestQuote">
+                        Request a Quote
                     </a>
-                    <a href="#portfolio" class="border-2 border-purple-400 text-purple-200 hover:bg-purple-900 hover:bg-opacity-30 font-bold py-3 px-6 rounded-lg transition duration-300 text-center">
-                        Vedi i nostri lavori
+                    <a href="#portfolio" class="border-2 border-purple-400 text-purple-200 hover:bg-purple-900 hover:bg-opacity-30 font-bold py-3 px-6 rounded-lg transition duration-300 text-center" data-translate="seeOurWork">
+                        See Our Work
                     </a>
                 </div>
             </div>
@@ -85,9 +114,9 @@
                             <div class="bg-purple-600 p-2 rounded-full mr-3">
                                 <i class="fas fa-trophy text-white text-xl"></i>
                             </div>
-                            <div>
-                                <p class="font-bold text-white">+100 progetti</p>
-                                <p class="text-purple-200 text-sm">completati con successo</p>
+                            <div class="completed-projects">
+                                <p class="font-bold text-white">+100 Projects</p>
+                                <p class="text-white text-sm opacity-90">Successfully Completed</p>
                             </div>
                         </div>
                     </div>
@@ -99,7 +128,7 @@
     <!-- Clients Section -->
     <section class="py-12 bg-gray-800">
         <div class="container mx-auto px-4">
-            <h2 class="text-center text-2xl font-semibold text-purple-300 mb-10">Collaboriamo con aziende di successo</h2>
+            <h2 class="text-center text-2xl font-semibold text-purple-300 mb-10 fade-in" data-translate="clientsTitle">Collaboriamo con aziende di successo</h2>
             <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 client-logos">
                 <div class="grayscale hover:grayscale-0 transition duration-300 opacity-70 hover:opacity-100">
                     <i class="fab fa-apple text-5xl text-white"></i>
@@ -124,169 +153,169 @@
     <section id="services" class="py-20 bg-gray-900">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">
-                    <span class="bg-gradient-to-r from-purple-400 to-purple-200 bg-clip-text text-transparent">I Nostri Servizi</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 fade-in">
+                    <span class="bg-gradient-to-r from-purple-400 to-purple-200 bg-clip-text text-transparent" data-translate="ourServices">I Nostri Servizi</span>
                 </h2>
-                <p class="text-lg text-purple-200 max-w-2xl mx-auto">
+                <p class="text-lg text-purple-200 max-w-2xl mx-auto slide-in delay-200" data-translate="servicesSubtitle">
                     Offriamo soluzioni complete per la tua presenza digitale, dalla progettazione allo sviluppo e manutenzione.
                 </p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 service-grid">
                 <!-- Service 1 -->
-                <div class="service-card bg-gray-800 rounded-xl p-8 transition duration-300 hover:border-purple-500 border border-gray-700">
+                <div class="service-card bg-gray-800 rounded-xl p-8 transition duration-300 hover:border-purple-500 border border-gray-700 slide-in delay-100">
                     <div class="bg-purple-900 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-6">
                         <i class="fas fa-laptop-code text-xl text-purple-300"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-white">Siti Web Personalizzati</h3>
-                    <p class="text-purple-100 mb-4">
+                    <h3 class="text-xl font-bold mb-3 text-white" data-translate="webDev">Sviluppo Web</h3>
+                    <p class="text-purple-100 mb-4" data-translate="webDevDesc">
                         Creiamo siti web su misura che rappresentano perfettamente il tuo brand e attirano nuovi clienti.
                     </p>
                     <ul class="space-y-2 text-purple-200">
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-purple-400 mr-2"></i>
-                            Design responsive e moderno
+                            <span data-translate="responsiveDesign">Design responsive e moderno</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-purple-400 mr-2"></i>
-                            Ottimizzazione SEO
+                            <span data-translate="seoOptimization">Ottimizzazione SEO</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-purple-400 mr-2"></i>
-                            Integrazione con social media
+                            <span data-translate="socialIntegration">Integrazione con social media</span>
                         </li>
                     </ul>
                 </div>
                 
                 <!-- Service 2 -->
-                <div class="service-card bg-gray-800 rounded-xl p-8 transition duration-300 hover:border-purple-500 border border-gray-700">
+                <div class="service-card bg-gray-800 rounded-xl p-8 transition duration-300 hover:border-purple-500 border border-gray-700 slide-in delay-200">
                     <div class="bg-purple-900 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-6">
                         <i class="fas fa-mobile-alt text-xl text-purple-300"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-white">Applicazioni Mobile</h3>
+                    <h3 class="text-xl font-bold mb-3 text-white" data-translate="mobileApps">Applicazioni Mobile</h3>
                     <p class="text-purple-100 mb-4">
                         Sviluppiamo app innovative per iOS e Android che migliorano l'esperienza dei tuoi utenti.
                     </p>
                     <ul class="space-y-2 text-purple-200">
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-purple-400 mr-2"></i>
-                            Design intuitivo e user-friendly
+                            <span data-translate="customStrategy">Design intuitivo e user-friendly</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-purple-400 mr-2"></i>
-                            Sincronizzazione cloud
+                            <span data-translate="cloudSync">Sincronizzazione cloud</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-purple-400 mr-2"></i>
-                            Aggiornamenti continui
+                            <span data-translate="continousUpdates">Aggiornamenti continui</span>
                         </li>
                     </ul>
                 </div>
                 
                 <!-- Service 3 -->
-                <div class="service-card bg-gray-800 rounded-xl p-8 transition duration-300 hover:border-purple-500 border border-gray-700">
+                <div class="service-card bg-gray-800 rounded-xl p-8 transition duration-300 hover:border-purple-500 border border-gray-700 slide-in delay-300">
                     <div class="bg-purple-900 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-6">
                         <i class="fas fa-shopping-cart text-xl text-purple-300"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-white">E-Commerce</h3>
+                    <h3 class="text-xl font-bold mb-3 text-white" data-translate="ecommerce">E-Commerce</h3>
                     <p class="text-purple-100 mb-4">
                         Piattaforme di vendita online complete con tutti gli strumenti per far crescere il tuo business.
                     </p>
                     <ul class="space-y-2 text-purple-200">
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-purple-400 mr-2"></i>
-                            Gateway di pagamento sicuri
+                            <span data-translate="securePayments">Gateway di pagamento sicuri</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-purple-400 mr-2"></i>
-                            Gestione inventario
+                            <span data-translate="inventoryManagement">Gestione inventario</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-purple-400 mr-2"></i>
-                            Analisi delle vendite
+                            <span data-translate="salesAnalytics">Analisi delle vendite</span>
                         </li>
                     </ul>
                 </div>
                 
                 <!-- Service 4 - Social Media Management -->
-                <div class="service-card bg-gray-800 rounded-xl p-8 transition duration-300 hover:border-purple-500 border border-gray-700">
+                <div class="service-card bg-gray-800 rounded-xl p-8 transition duration-300 hover:border-purple-500 border border-gray-700 slide-in delay-100">
                     <div class="bg-purple-900 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-6">
                         <i class="fas fa-hashtag text-xl text-purple-300"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-white">Social Media Management</h3>
-                    <p class="text-purple-100 mb-4">
+                    <h3 class="text-xl font-bold mb-3 text-white" data-translate="socialMediaManagement">Social Media Management</h3>
+                    <p class="text-purple-100 mb-4" data-translate="socialDesc">
                         Gestiamo la tua presenza sui social media per aumentare la visibilità e l'engagement con il tuo pubblico.
                     </p>
                     <ul class="space-y-2 text-purple-200">
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-purple-400 mr-2"></i>
-                            Strategia personalizzata
+                            <span data-translate="customStrategy">Strategia personalizzata</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-purple-400 mr-2"></i>
-                            Creazione contenuti
+                            <span data-translate="contentCreation">Creazione contenuti</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-purple-400 mr-2"></i>
-                            Community management
+                            <span data-translate="communityManagement">Community management</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-purple-400 mr-2"></i>
-                            Report mensili
+                            <span data-translate="monthlyReports">Report mensili</span>
                         </li>
                     </ul>
                 </div>
                 
-                <!-- Service 5 - Campagne Social -->
-                <div class="service-card bg-gray-800 rounded-xl p-8 transition duration-300 hover:border-purple-500 border border-gray-700">
+                <!-- Service 5 -->
+                <div class="service-card bg-gray-800 rounded-xl p-8 transition duration-300 hover:border-purple-500 border border-gray-700 slide-in delay-200">
                     <div class="bg-purple-900 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-6">
                         <i class="fas fa-bullhorn text-xl text-purple-300"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-white">Campagne Social</h3>
-                    <p class="text-purple-100 mb-4">
+                    <h3 class="text-xl font-bold mb-3 text-white" data-translate="campaigns">Campagne Social</h3>
+                    <p class="text-purple-100 mb-4" data-translate="campaignsDesc">
                         Creiamo campagne pubblicitarie efficaci su Facebook, Instagram, LinkedIn e TikTok per raggiungere i tuoi obiettivi.
                     </p>
                     <ul class="space-y-2 text-purple-200">
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-purple-400 mr-2"></i>
-                            Targeting avanzato
+                            <span data-translate="advancedTargeting">Targeting avanzato</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-purple-400 mr-2"></i>
-                            Creazione annunci
+                            <span data-translate="adCreation">Creazione annunci</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-purple-400 mr-2"></i>
-                            A/B testing
+                            <span data-translate="abTesting">A/B testing</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-purple-400 mr-2"></i>
-                            Ottimizzazione ROI
+                            <span data-translate="roiOptimization">Ottimizzazione ROI</span>
                         </li>
                     </ul>
                 </div>
                 
                 <!-- Service 6 -->
-                <div class="service-card bg-gray-800 rounded-xl p-8 transition duration-300 hover:border-purple-500 border border-gray-700">
+                <div class="service-card bg-gray-800 rounded-xl p-8 transition duration-300 hover:border-purple-500 border border-gray-700 slide-in delay-300">
                     <div class="bg-purple-900 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-6">
                         <i class="fas fa-search-dollar text-xl text-purple-300"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-white">SEO & Marketing</h3>
-                    <p class="text-purple-100 mb-4">
+                    <h3 class="text-xl font-bold mb-3 text-white" data-translate="seoMarketing">SEO & Marketing</h3>
+                    <p class="text-purple-100 mb-4" data-translate="seoMarketingDesc">
                         Miglioriamo la visibilità del tuo sito sui motori di ricerca e aumentiamo il traffico qualificato.
                     </p>
                     <ul class="space-y-2 text-purple-200">
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-purple-400 mr-2"></i>
-                            Analisi delle parole chiave
+                            <span data-translate="keywordAnalysis">Analisi delle parole chiave</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-purple-400 mr-2"></i>
-                            Ottimizzazione contenuti
+                            <span data-translate="contentOptimization">Ottimizzazione contenuti</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check-circle text-purple-400 mr-2"></i>
-                            Link building
+                            <span data-translate="linkBuilding">Link building</span>
                         </li>
                     </ul>
                 </div>
@@ -298,24 +327,24 @@
     <section id="portfolio" class="py-20 bg-gray-800">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 fade-in" data-translate="portfolioTitle">
                     <span class="bg-gradient-to-r from-purple-400 to-purple-200 bg-clip-text text-transparent">Il Nostro Portfolio</span>
                 </h2>
-                <p class="text-lg text-purple-200 max-w-2xl mx-auto">
+                <p class="text-lg text-purple-200 max-w-2xl mx-auto slide-in delay-200" data-translate="portfolioSubtitle">
                     Ecco alcuni dei nostri progetti più recenti che dimostrano la nostra esperienza e creatività.
                 </p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 portfolio-grid">
                 <!-- Project 1 -->
-                <div class="group relative overflow-hidden rounded-xl shadow-lg">
+                <div class="group relative overflow-hidden rounded-xl shadow-lg slide-in delay-100">
                     <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1136&q=80" 
                          alt="Progetto E-Commerce" 
                          class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
                     <div class="absolute bottom-0 left-0 p-6 w-full">
-                        <h3 class="text-xl font-bold text-white mb-2">Piattaforma E-Commerce</h3>
-                        <p class="text-purple-200 mb-3">Una soluzione completa per la vendita online con integrazione pagamenti e CRM</p>
+                        <h3 class="text-xl font-bold text-white mb-2" data-translate="ecommercePlatform">Piattaforma E-Commerce</h3>
+                        <p class="text-purple-200 mb-3" data-translate="ecommerceDescription">Una soluzione completa per la vendita online con integrazione pagamenti e CRM</p>
                         <div class="flex space-x-2">
                             <span class="bg-purple-900 text-purple-100 text-xs px-2 py-1 rounded">WordPress</span>
                             <span class="bg-purple-900 text-purple-100 text-xs px-2 py-1 rounded">WooCommerce</span>
@@ -325,14 +354,14 @@
                 </div>
                 
                 <!-- Project 2 -->
-                <div class="group relative overflow-hidden rounded-xl shadow-lg">
+                <div class="group relative overflow-hidden rounded-xl shadow-lg slide-in delay-200">
                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
                          alt="App Mobile" 
                          class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
                     <div class="absolute bottom-0 left-0 p-6 w-full">
-                        <h3 class="text-xl font-bold text-white mb-2">App Fitness</h3>
-                        <p class="text-purple-200 mb-3">Applicazione per il tracking degli allenamenti e della nutrizione</p>
+                        <h3 class="text-xl font-bold text-white mb-2" data-translate="fitnessApp">App Fitness</h3>
+                        <p class="text-purple-200 mb-3" data-translate="fitnessAppDescription">Applicazione per il tracking degli allenamenti e della nutrizione</p>
                         <div class="flex space-x-2">
                             <span class="bg-purple-900 text-purple-100 text-xs px-2 py-1 rounded">React Native</span>
                             <span class="bg-purple-900 text-purple-100 text-xs px-2 py-1 rounded">Firebase</span>
@@ -342,14 +371,14 @@
                 </div>
                 
                 <!-- Project 3 - Social Media Campaign -->
-                <div class="group relative overflow-hidden rounded-xl shadow-lg">
+                <div class="group relative overflow-hidden rounded-xl shadow-lg slide-in delay-300">
                     <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
                          alt="Campagna Social" 
                          class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
                     <div class="absolute bottom-0 left-0 p-6 w-full">
-                        <h3 class="text-xl font-bold text-white mb-2">Campagna Social</h3>
-                        <p class="text-purple-200 mb-3">Strategia social media per brand di moda con +300% engagement</p>
+                        <h3 class="text-xl font-bold text-white mb-2" data-translate="socialCampaign">Campagna Social</h3>
+                        <p class="text-purple-200 mb-3" data-translate="socialCampaignDescription">Strategia social media per brand di moda con +300% engagement</p>
                         <div class="flex space-x-2">
                             <span class="bg-purple-900 text-purple-100 text-xs px-2 py-1 rounded">Instagram</span>
                             <span class="bg-purple-900 text-purple-100 text-xs px-2 py-1 rounded">Facebook</span>
@@ -360,7 +389,7 @@
             </div>
             
             <div class="text-center mt-12">
-                <a href="#contact" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+                <a href="#contact" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300" data-translate="similarProject">
                     Vuoi un progetto simile?
                 </a>
             </div>
@@ -372,36 +401,38 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col lg:flex-row items-center">
                 <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6">
-                        <span class="bg-gradient-to-r from-purple-400 to-purple-200 bg-clip-text text-transparent">Chi Siamo</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 fade-in">
+                        <span class="bg-gradient-to-r from-purple-400 to-purple-200 bg-clip-text text-transparent" data-translate="aboutUs">Chi Siamo</span>
                     </h2>
-                    <p class="text-lg text-purple-100 mb-6">
+                    <p class="text-lg text-purple-100 mb-6 slide-in delay-200" data-translate="aboutDescription">
                         Websidte è un'agenzia digitale specializzata nella creazione di siti web e applicazioni mobile su misura. Fondata nel 2015, abbiamo aiutato oltre 100 aziende a trasformare la loro presenza digitale.
                     </p>
-                    <p class="text-lg text-purple-100 mb-8">
+                    <p class="text-lg text-purple-100 mb-8 slide-in delay-300" data-translate="teamDescription">
                         Il nostro team è composto da sviluppatori, designer e esperti di marketing digitale che lavorano insieme per creare soluzioni complete e innovative.
                     </p>
                     
                     <div class="grid grid-cols-2 gap-4 mb-8">
-                        <div class="bg-gray-800 p-4 rounded-lg border border-purple-900">
-                            <div class="text-purple-400 text-3xl font-bold mb-2">100+</div>
-                            <div class="text-purple-200">Progetti completati</div>
+                        <div class="bg-purple-900/40 p-4 rounded-lg shadow-lg inline-block">
+                            <p class="text-2xl font-bold mb-2">
+                                <span class="number-animation" data-translate="projectCount">+100</span>
+                            </p>
+                            <p class="text-sm text-purple-100" data-translate="projectsCompleted">Projects</p>
                         </div>
                         <div class="bg-gray-800 p-4 rounded-lg border border-purple-900">
-                            <div class="text-purple-400 text-3xl font-bold mb-2">15+</div>
-                            <div class="text-purple-200">Professionisti nel team</div>
+                            <div class="text-purple-400 text-3xl font-bold mb-2"><span class="number-animation">15</span>+</div>
+                            <div class="text-purple-200" data-translate="teamMembers">Professionisti nel team</div>
                         </div>
                         <div class="bg-gray-800 p-4 rounded-lg border border-purple-900">
-                            <div class="text-purple-400 text-3xl font-bold mb-2">8</div>
-                            <div class="text-purple-200">Anni di esperienza</div>
+                            <div class="text-purple-400 text-3xl font-bold mb-2"><span class="number-animation">8</span></div>
+                            <div class="text-purple-200" data-translate="yearsExperience">Anni di esperienza</div>
                         </div>
                         <div class="bg-gray-800 p-4 rounded-lg border border-purple-900">
-                            <div class="text-purple-400 text-3xl font-bold mb-2">24/7</div>
-                            <div class="text-purple-200">Supporto clienti</div>
+                            <div class="text-purple-400 text-3xl font-bold mb-2"><span class="number-animation">24</span>/7</div>
+                            <div class="text-purple-200" data-translate="support">Supporto clienti</div>
                         </div>
                     </div>
                     
-                    <a href="#contact" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+                    <a href="#contact" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300" data-translate="contactUs">
                         Contattaci
                     </a>
                 </div>
@@ -436,8 +467,8 @@
                                 <i class="fas fa-award text-white text-2xl"></i>
                             </div>
                             <div>
-                                <p class="font-bold text-white">Agenzia dell'anno 2022</p>
-                                <p class="text-purple-200 text-sm">Premio Digital Innovation</p>
+                                <p class="font-bold text-white" data-translate="agencyOfTheYear">Agenzia dell'anno 2022</p>
+                                <p class="text-purple-200 text-sm" data-translate="digitalInnovationAward">Premio Digital Innovation</p>
                             </div>
                         </div>
                     </div>
@@ -450,17 +481,17 @@
     <section class="py-20 bg-gray-800">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">
-                    <span class="bg-gradient-to-r from-purple-400 to-purple-200 bg-clip-text text-transparent">Cosa Dicono i Nostri Clienti</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 fade-in">
+                    <span class="bg-gradient-to-r from-purple-400 to-purple-200 bg-clip-text text-transparent" data-translate="testimonialsTitle">Cosa Dicono i Nostri Clienti</span>
                 </h2>
-                <p class="text-lg text-purple-200 max-w-2xl mx-auto">
+                <p class="text-lg text-purple-200 max-w-2xl mx-auto slide-in delay-200" data-translate="testimonialsSubtitle">
                     Le opinioni dei nostri clienti sono la nostra migliore pubblicità.
                 </p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 testimonial-grid">
                 <!-- Testimonial 1 -->
-                <div class="bg-gray-700 rounded-xl p-8 border border-purple-900">
+                <div class="bg-gray-700 rounded-xl p-8 border border-purple-900 slide-in delay-100">
                     <div class="flex items-center mb-4">
                         <div class="text-yellow-400 mr-2">
                             <i class="fas fa-star"></i>
@@ -470,7 +501,7 @@
                             <i class="fas fa-star"></i>
                         </div>
                     </div>
-                    <p class="text-purple-100 mb-6 italic">
+                    <p class="text-purple-100 mb-6 italic" data-translate="testimonial1">
                         "Websidte ha trasformato completamente il nostro sito web. Ora abbiamo un design moderno e funzionale che ci ha aiutato ad aumentare le conversioni del 40%."
                     </p>
                     <div class="flex items-center">
@@ -478,14 +509,14 @@
                              alt="Maria Rossi" 
                              class="w-12 h-12 rounded-full mr-4 border-2 border-purple-500">
                         <div>
-                            <h4 class="font-bold text-white">Maria Rossi</h4>
-                            <p class="text-purple-300 text-sm">CEO, FashionStyle</p>
+                            <h4 class="font-bold text-white" data-translate="testimonial1Name">Maria Rossi</h4>
+                            <p class="text-purple-300 text-sm" data-translate="testimonial1Role">CEO, FashionStyle</p>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Testimonial 2 -->
-                <div class="bg-gray-700 rounded-xl p-8 border border-purple-900">
+                <div class="bg-gray-700 rounded-xl p-8 border border-purple-900 slide-in delay-200">
                     <div class="flex items-center mb-4">
                         <div class="text-yellow-400 mr-2">
                             <i class="fas fa-star"></i>
@@ -495,7 +526,7 @@
                             <i class="fas fa-star"></i>
                         </div>
                     </div>
-                    <p class="text-purple-100 mb-6 italic">
+                    <p class="text-purple-100 mb-6 italic" data-translate="testimonial2">
                         "L'app sviluppata da Websidte ha superato tutte le nostre aspettative. Il team è stato professionale e ha risposto a tutte le nostre richieste in tempi rapidi."
                     </p>
                     <div class="flex items-center">
@@ -503,14 +534,14 @@
                              alt="Luigi Bianchi" 
                              class="w-12 h-12 rounded-full mr-4 border-2 border-purple-500">
                         <div>
-                            <h4 class="font-bold text-white">Luigi Bianchi</h4>
-                            <p class="text-purple-300 text-sm">Founder, FitTrack</p>
+                            <h4 class="font-bold text-white" data-translate="testimonial2Name">Luigi Bianchi</h4>
+                            <p class="text-purple-300 text-sm" data-translate="testimonial2Role">Founder, FitTrack</p>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Testimonial 3 -->
-                <div class="bg-gray-700 rounded-xl p-8 border border-purple-900">
+                <div class="bg-gray-700 rounded-xl p-8 border border-purple-900 slide-in delay-300">
                     <div class="flex items-center mb-4">
                         <div class="text-yellow-400 mr-2">
                             <i class="fas fa-star"></i>
@@ -520,7 +551,7 @@
                             <i class="fas fa-star-half-alt"></i>
                         </div>
                     </div>
-                    <p class="text-purple-100 mb-6 italic">
+                    <p class="text-purple-100 mb-6 italic" data-translate="testimonial3">
                         "La campagna social che hanno creato per noi ha generato un aumento del 150% delle visite al sito e del 200% delle interazioni con il nostro brand."
                     </p>
                     <div class="flex items-center">
@@ -528,8 +559,8 @@
                              alt="Giulia Verdi" 
                              class="w-12 h-12 rounded-full mr-4 border-2 border-purple-500">
                         <div>
-                            <h4 class="font-bold text-white">Giulia Verdi</h4>
-                            <p class="text-purple-300 text-sm">Marketing Director, CasaBio</p>
+                            <h4 class="font-bold text-white" data-translate="testimonial3Name">Giulia Verdi</h4>
+                            <p class="text-purple-300 text-sm" data-translate="testimonial3Role">Marketing Director, CasaBio</p>
                         </div>
                     </div>
                 </div>
@@ -542,10 +573,10 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col lg:flex-row contact-section">
                 <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 fade-in" data-translate="contactUs">
                         <span class="bg-gradient-to-r from-purple-400 to-purple-200 bg-clip-text text-transparent">Contattaci</span>
                     </h2>
-                    <p class="text-lg text-purple-100 mb-8">
+                    <p class="text-lg text-purple-100 mb-8 slide-in delay-200" data-translate="contactDescription">
                         Pronto a trasformare la tua presenza digitale? Compila il form o contattaci direttamente. Saremo felici di discutere il tuo progetto!
                     </p>
                     
@@ -555,8 +586,8 @@
                                 <i class="fas fa-map-marker-alt text-purple-300"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-white mb-1">Indirizzo</h4>
-                                <p class="text-purple-200">Via Roma 123, 20100 Milano, Italia</p>
+                                <h4 class="font-bold text-white mb-1" data-translate="address">Indirizzo</h4>
+                                <p class="text-purple-200">33170 Pordenone, Italia</p>
                             </div>
                         </div>
                         
@@ -565,7 +596,7 @@
                                 <i class="fas fa-envelope text-purple-300"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-white mb-1">Email</h4>
+                                <h4 class="font-bold text-white mb-1" data-translate="email">Email</h4>
                                 <p class="text-purple-200">info@websidte.it</p>
                             </div>
                         </div>
@@ -575,8 +606,8 @@
                                 <i class="fas fa-phone-alt text-purple-300"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-white mb-1">Telefono</h4>
-                                <p class="text-purple-200">+39 02 1234567</p>
+                                <h4 class="font-bold text-white mb-1" data-translate="phone">Telefono</h4>
+                                <p class="text-purple-200">+39 3485933671</p>
                             </div>
                         </div>
                         
@@ -585,14 +616,14 @@
                                 <i class="fas fa-clock text-purple-300"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-white mb-1">Orari</h4>
-                                <p class="text-purple-200">Lun-Ven: 9:00 - 18:00</p>
+                                <h4 class="font-bold text-white mb-1" data-translate="hours">Orari</h4>
+                                <p class="text-purple-200" data-translate="workingHours">Lun-Ven: 9:00 - 18:00</p>
                             </div>
                         </div>
                     </div>
                     
                     <div class="mt-8">
-                        <h4 class="font-bold text-white mb-4">Seguici sui social</h4>
+                        <h4 class="font-bold text-white mb-4" data-translate="followUs">Seguici sui social</h4>
                         <div class="flex space-x-4">
                             <a href="#" class="bg-purple-800 hover:bg-purple-700 w-10 h-10 rounded-full flex items-center justify-center text-purple-200 transition duration-300">
                                 <i class="fab fa-facebook-f"></i>
@@ -611,43 +642,43 @@
                 </div>
                 
                 <div class="lg:w-1/2">
-                    <form class="bg-gray-800 rounded-xl p-8 border border-purple-900">
+                    <form class="bg-gray-800 rounded-xl p-8 border border-purple-900 slide-in delay-300">
                         <div class="mb-6">
-                            <label for="name" class="block text-purple-200 font-medium mb-2">Nome Completo</label>
-                            <input type="text" id="name" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-purple-400" placeholder="Il tuo nome">
+                            <label for="name" class="block text-purple-200 font-medium mb-2" data-translate="fullName">Nome Completo</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-purple-400" placeholder="Il tuo nome" data-translate-placeholder="yourName">
                         </div>
                         
                         <div class="mb-6">
-                            <label for="email" class="block text-purple-200 font-medium mb-2">Email</label>
-                            <input type="email" id="email" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-purple-400" placeholder="tua@email.com">
+                            <label for="email" class="block text-purple-200 font-medium mb-2" data-translate="email">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-purple-400" placeholder="tua@email.com" data-translate-placeholder="yourEmail">
                         </div>
                         
                         <div class="mb-6">
-                            <label for="phone" class="block text-purple-200 font-medium mb-2">Telefono</label>
+                            <label for="phone" class="block text-purple-200 font-medium mb-2" data-translate="phone">Telefono</label>
                             <input type="tel" id="phone" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-purple-400" placeholder="+39 123 456 7890">
                         </div>
                         
                         <div class="mb-6">
-                            <label for="service" class="block text-purple-200 font-medium mb-2">Servizio di interesse</label>
+                            <label for="service" class="block text-purple-200 font-medium mb-2" data-translate="serviceInterest">Servizio di interesse</label>
                             <select id="service" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-purple-400">
-                                <option value="" disabled selected>Seleziona un servizio</option>
-                                <option value="website">Sito Web</option>
-                                <option value="app">Applicazione Mobile</option>
-                                <option value="ecommerce">E-Commerce</option>
-                                <option value="social">Social Media Management</option>
-                                <option value="campaign">Campagne Social</option>
-                                <option value="seo">SEO & Marketing</option>
-                                <option value="hosting">Hosting & Manutenzione</option>
-                                <option value="branding">Brand Identity</option>
+                                <option value="" disabled selected data-translate="selectService">Seleziona un servizio</option>
+                                <option value="website" data-translate="website">Sito Web</option>
+                                <option value="app" data-translate="app">Applicazione Mobile</option>
+                                <option value="ecommerce" data-translate="ecommerce">E-Commerce</option>
+                                <option value="social" data-translate="socialMedia">Social Media Management</option>
+                                <option value="campaign" data-translate="campaigns">Campagne Social</option>
+                                <option value="seo" data-translate="seoMarketing">SEO & Marketing</option>
+                                <option value="hosting" data-translate="hosting">Hosting & Manutenzione</option>
+                                <option value="branding" data-translate="branding">Brand Identity</option>
                             </select>
                         </div>
                         
                         <div class="mb-6">
-                            <label for="message" class="block text-purple-200 font-medium mb-2">Messaggio</label>
-                            <textarea id="message" rows="5" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-purple-400" placeholder="Descrivici il tuo progetto..."></textarea>
+                            <label for="message" class="block text-purple-200 font-medium mb-2" data-translate="message">Messaggio</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white placeholder-purple-400" placeholder="Descrivici il tuo progetto..." data-translate-placeholder="yourMessage"></textarea>
                         </div>
                         
-                        <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300">
+                        <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300" data-translate="sendRequest">
                             Invia Richiesta
                         </button>
                     </form>
@@ -670,47 +701,47 @@
                             <path d="M20 12V8M20 32V28M8 20H12M28 20H32" stroke="#a855f7" stroke-width="2" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <a href="#" class="text-xl font-bold bg-gradient-to-r from-purple-600 to-purple-400 bg-clip-text text-transparent">WEBSIDTE</a>
+                    <a href="#" class="text-xl font-bold bg-gradient-to-r from-purple-600 to-purple-400 bg-clip-text text-transparent" data-translate="footerLogo">WEBSIDTE</a>
                 </div>
                 
                 <div class="flex flex-wrap justify-center gap-6 md:gap-12 footer-links">
                     <div>
-                        <h3 class="text-white font-bold mb-3">Navigazione</h3>
+                        <h3 class="text-white font-bold mb-3" data-translate="navigation">Navigazione</h3>
                         <ul class="space-y-2">
-                            <li><a href="#home" class="text-purple-300 hover:text-white transition duration-300">Home</a></li>
-                            <li><a href="#services" class="text-purple-300 hover:text-white transition duration-300">Servizi</a></li>
-                            <li><a href="#portfolio" class="text-purple-300 hover:text-white transition duration-300">Portfolio</a></li>
-                            <li><a href="#about" class="text-purple-300 hover:text-white transition duration-300">Chi Siamo</a></li>
-                            <li><a href="#contact" class="text-purple-300 hover:text-white transition duration-300">Contatti</a></li>
+                            <li><a href="#home" class="text-purple-300 hover:text-white transition duration-300" data-translate="home">Home</a></li>
+                            <li><a href="#services" class="text-purple-300 hover:text-white transition duration-300" data-translate="services">Servizi</a></li>
+                            <li><a href="#portfolio" class="text-purple-300 hover:text-white transition duration-300" data-translate="portfolio">Portfolio</a></li>
+                            <li><a href="#about" class="text-purple-300 hover:text-white transition duration-300" data-translate="about">Chi Siamo</a></li>
+                            <li><a href="#contact" class="text-purple-300 hover:text-white transition duration-300" data-translate="contact">Contatti</a></li>
                         </ul>
                     </div>
                     
                     <div>
-                        <h3 class="text-white font-bold mb-3">Servizi</h3>
+                        <h3 class="text-white font-bold mb-3" data-translate="services">Servizi</h3>
                         <ul class="space-y-2">
-                            <li><a href="#" class="text-purple-300 hover:text-white transition duration-300">Siti Web</a></li>
-                            <li><a href="#" class="text-purple-300 hover:text-white transition duration-300">App Mobile</a></li>
-                            <li><a href="#" class="text-purple-300 hover:text-white transition duration-300">E-Commerce</a></li>
-                            <li><a href="#" class="text-purple-300 hover:text-white transition duration-300">Social Media</a></li>
-                            <li><a href="#" class="text-purple-300 hover:text-white transition duration-300">SEO</a></li>
+                            <li><a href="#" class="text-purple-300 hover:text-white transition duration-300" data-translate="websites">Siti Web</a></li>
+                            <li><a href="#" class="text-purple-300 hover:text-white transition duration-300" data-translate="mobileApps">App Mobile</a></li>
+                            <li><a href="#" class="text-purple-300 hover:text-white transition duration-300" data-translate="ecommerce">E-Commerce</a></li>
+                            <li><a href="#" class="text-purple-300 hover:text-white transition duration-300" data-translate="socialMedia">Social Media</a></li>
+                            <li><a href="#" class="text-purple-300 hover:text-white transition duration-300" data-translate="seo">SEO</a></li>
                         </ul>
                     </div>
                     
                     <div>
-                        <h3 class="text-white font-bold mb-3">Legal</h3>
+                        <h3 class="text-white font-bold mb-3" data-translate="legal">Legal</h3>
                         <ul class="space-y-2">
-                            <li><a href="#" class="text-purple-300 hover:text-white transition duration-300">Privacy Policy</a></li>
-                            <li><a href="#" class="text-purple-300 hover:text-white transition duration-300">Cookie Policy</a></li>
-                            <li><a href="#" class="text-purple-300 hover:text-white transition duration-300">Termini di Servizio</a></li>
+                            <li><a href="#" class="text-purple-300 hover:text-white transition duration-300" data-translate="privacyPolicy">Privacy Policy</a></li>
+                            <li><a href="#" class="text-purple-300 hover:text-white transition duration-300" data-translate="cookiePolicy">Cookie Policy</a></li>
+                            <li><a href="#" class="text-purple-300 hover:text-white transition duration-300" data-translate="termsOfService">Termini di Servizio</a></li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="w-full md:w-auto mt-8 md:mt-0">
-                    <h3 class="text-white font-bold mb-3 text-center md:text-left">Newsletter</h3>
+                    <h3 class="text-white font-bold mb-3 text-center md:text-left" data-translate="newsletter">Newsletter</h3>
                     <div class="flex">
-                        <input type="email" placeholder="La tua email" class="px-4 py-2 bg-gray-800 text-white rounded-l-lg focus:outline-none focus:ring-2 focus:ring-purple-500 w-full">
-                        <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-r-lg transition duration-300">
+                        <input type="email" placeholder="La tua email" class="px-4 py-2 bg-gray-800 text-white rounded-l-lg focus:outline-none focus:ring-2 focus:ring-purple-500 w-full" data-translate-placeholder="yourEmail">
+                        <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-r-lg transition duration-300" data-translate="subscribe">
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </div>
@@ -718,28 +749,26 @@
             </div>
             
             <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-purple-300 text-sm mb-4 md:mb-0">
-                    &copy; 2023 Websidte. Tutti i diritti riservati.
+                <p class="text-purple-300 text-sm mb-4 md:mb-0" data-translate="copyright">
+                    &copy; 2025 Websidte. Tutti i diritti riservati.
                 </p>
                 
                 <div class="flex space-x-6">
-                    <a href="#" class="text-purple-300 hover:text-white transition duration-300">
+                    <a href="#" class="text-purple-300 hover:text-white transition duration-300" data-translate="facebook">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="#" class="text-purple-300 hover:text-white transition duration-300">
+                    <a href="#" class="text-purple-300 hover:text-white transition duration-300" data-translate="twitter">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="#" class="text-purple-300 hover:text-white transition duration-300">
+                    <a href="#" class="text-purple-300 hover:text-white transition duration-300" data-translate="instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="#" class="text-purple-300 hover:text-white transition duration-300">
+                    <a href="#" class="text-purple-300 hover:text-white transition duration-300" data-translate="linkedin">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
             </div>
         </div>
     </footer>
-
-    <script type="module" src="js/main.js"></script>
 </body>
 </html>

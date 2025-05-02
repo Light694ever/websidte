@@ -1,0 +1,301 @@
+/* Light Theme */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --accent-primary: #6b21a8;
+    --accent-secondary: #1e1b4b;
+    --card-bg: #e2e8f0;
+    --header-bg: rgba(255, 255, 255, 0.95);
+    --border-color: #e2e8f0;
+    --gradient-start: #6b21a8;
+    --gradient-end: #1e1b4b;
+    --service-card-bg: #f1f5f9;
+    --service-card-border: #cbd5e1;
+    --service-card-shadow: rgba(0, 0, 0, 0.1);
+    --icon-bg: #6b21a8;
+    --icon-color: #ffffff;
+    --stats-bg: #6b21a8;
+    --stats-text: #ffffff;
+    --stats-border: #8b5cf6;
+    --logo-color: #6b21a8;
+    --social-icon-color: #ffffff;
+    --trophy-text: #ffffff;
+    --button-text: #ffffff;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+    --bg-primary: #111827;
+    --bg-secondary: #1f2937;
+    --text-primary: #ffffff;
+    --text-secondary: #9ca3af;
+    --accent-primary: #6b21a8;
+    --accent-secondary: #1e1b4b;
+    --card-bg: #1f2937;
+    --header-bg: rgba(17, 24, 39, 0.95);
+    --border-color: #374151;
+    --gradient-start: #6b21a8;
+    --gradient-end: #1e1b4b;
+    --icon-bg: #6b21a8;
+    --icon-color: #9ca3af;
+    --hero-text: #ffffff;
+    --hero-subtitle: #9ca3af;
+}
+
+.gradient-bg {
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+}
+
+.gradient-bg h1,
+.gradient-bg p,
+.gradient-bg a {
+    color: #ffffff !important;
+}
+
+/* Theme-based styles */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+header {
+    background-color: var(--header-bg);
+}
+
+.bg-gray-900 { background-color: var(--bg-primary) !important; }
+.bg-gray-800 { background-color: var(--bg-secondary) !important; }
+.bg-gray-700 { background-color: var(--card-bg) !important; }
+
+.text-white { color: var(--text-primary) !important; }
+.text-gray-300 { color: var(--text-secondary) !important; }
+.text-purple-100, .text-purple-200, .text-purple-300 { color: var(--text-secondary) !important; }
+
+.border-gray-800 { border-color: var(--border-color) !important; }
+
+.service-card, .testimonial-card {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+.service-card {
+    background-color: var(--service-card-bg);
+    border: 1px solid var(--service-card-border);
+    box-shadow: 0 4px 6px var(--service-card-shadow);
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px var(--service-card-shadow);
+}
+
+[data-theme="light"] .service-card {
+    background: linear-gradient(145deg, #ffffff, var(--service-card-bg));
+}
+
+.service-card .bg-purple-900 {
+    background-color: var(--icon-bg) !important;
+}
+
+.service-card .text-purple-300,
+.service-card .fas {
+    color: var(--icon-color) !important;
+}
+
+.service-card h3 {
+    color: var(--text-primary) !important;
+}
+
+.service-card p,
+.service-card .text-purple-100,
+.service-card .text-purple-200 {
+    color: var(--text-secondary) !important;
+}
+
+/* Stats cards */
+[data-theme="light"] .bg-gray-800.border-purple-900 {
+    background-color: var(--stats-bg) !important;
+    border-color: var(--stats-border) !important;
+}
+
+[data-theme="light"] .text-purple-400,
+[data-theme="light"] .text-purple-200 {
+    color: var(--stats-text) !important;
+}
+
+/* Logo colors in light mode */
+[data-theme="light"] .client-logos i {
+    color: var(--logo-color) !important;
+}
+
+[data-theme="light"] .fa-facebook-f,
+[data-theme="light"] .fa-twitter,
+[data-theme="light"] .fa-instagram,
+[data-theme="light"] .fa-linkedin-in,
+[data-theme="light"] .fa-paper-plane,
+[data-theme="light"] .bg-purple-800 i {
+    color: var(--social-icon-color) !important;
+}
+
+[data-theme="light"] .bg-purple-800 {
+    background-color: var(--icon-bg) !important;
+}
+
+[data-theme="light"] .bg-purple-600 .text-white {
+    color: var(--button-text) !important;
+}
+
+[data-theme="light"] .bg-purple-800 p.font-bold.text-white,
+[data-theme="light"] .bg-purple-800 .text-purple-200,
+[data-theme="light"] .bg-purple-800 .font-bold.text-white,
+[data-theme="light"] .bg-purple-800 .text-sm.text-purple-200,
+[data-theme="light"] .bg-purple-600 p.font-bold.text-white,
+[data-theme="light"] .bg-purple-600 .text-xl.font-bold.text-white,
+[data-theme="light"] .bg-purple-800 div.text-3xl.font-bold.mb-2,
+[data-theme="light"] .bg-purple-800 div.text-purple-200 {
+    color: var(--trophy-text) !important;
+}
+
+[data-theme="light"] .bg-purple-600,
+[data-theme="light"] button[type="submit"].bg-purple-600 {
+    color: var(--button-text) !important;
+}
+
+[data-theme="light"] .bg-purple-600 a,
+[data-theme="light"] .bg-purple-600 button,
+[data-theme="light"] a.bg-purple-600,
+[data-theme="light"] button.bg-purple-600 {
+    color: var(--button-text) !important;
+}
+
+/* Button styles override */
+[data-theme="light"] .bg-purple-600 {
+    color: var(--button-text) !important;
+}
+
+[data-theme="light"] .bg-purple-600 * {
+    color: var(--button-text) !important;
+}
+
+/* Submit button override */
+[data-theme="light"] button[type="submit"].bg-purple-600.w-full {
+    color: var(--button-text) !important;
+}
+
+[data-theme="light"] button[type="submit"].bg-purple-600.w-full span {
+    color: var(--button-text) !important;
+}
+
+/* Portfolio button override */
+[data-theme="light"] .portfolio-grid + div a.bg-purple-600 {
+    color: var(--button-text) !important;
+}
+
+[data-theme="light"] .portfolio-grid + div .bg-purple-600 * {
+    color: var(--button-text) !important;
+}
+
+/* Technology tags and social names */
+[data-theme="light"] .bg-purple-900.text-purple-100 {
+    color: var(--button-text) !important;
+}
+
+[data-theme="light"] span.bg-purple-900,
+[data-theme="light"] .portfolio-grid .bg-purple-900 {
+    color: var(--button-text) !important;
+}
+
+/* Project tech stack tags */
+[data-theme="light"] .flex.space-x-2 span.bg-purple-900 {
+    color: var(--button-text) !important;
+}
+
+/* Features list items */
+[data-theme="light"] .space-y-2.text-purple-200 li,
+[data-theme="light"] .space-y-2.text-purple-200 .fas {
+    color: var(--text-primary) !important;
+}
+
+/* Social and tracking names */
+[data-theme="light"] .text-purple-200.text-sm,
+[data-theme="light"] .text-purple-300.text-sm {
+    color: var(--button-text) !important;
+}
+
+/* Technology tags background */
+[data-theme="light"] .bg-purple-900 {
+    background-color: var(--accent-primary) !important;
+}
+
+/* Ensure all small tags are visible */
+[data-theme="light"] .text-xs.px-2.py-1.rounded {
+    color: var(--button-text) !important;
+}
+
+/* Hero section text */
+[data-theme="light"] .text-purple-100.mb-8 {
+    color: var(--button-text) !important;
+}
+
+[data-theme="light"] .hero-image + div p.text-purple-200 {
+    color: var(--button-text) !important;
+}
+
+/* Hero section specific styles */
+.hero-section h1 {
+    color: var(--hero-text);
+}
+
+.hero-section p {
+    color: var(--hero-subtitle) !important;
+}
+
+[data-theme="light"] .text-purple-100,
+[data-theme="light"] .text-purple-200 {
+    color: var(--hero-subtitle) !important;
+}
+
+.gradient-bg h1,
+.gradient-bg p {
+    color: #ffffff !important;
+}
+
+/* Override per i testi nella modalità light */
+[data-theme="light"] .text-purple-100,
+[data-theme="light"] .text-purple-200,
+[data-theme="light"] .text-purple-300 {
+    color: inherit !important;
+}
+
+/* Service cards text colors */
+.service-card .text-purple-100 {
+    color: var(--text-primary) !important;
+}
+
+.service-card .text-purple-200 {
+    color: var(--text-secondary) !important;
+}
+
+/* Portfolio text colors */
+.portfolio-grid .text-purple-200 {
+    color: #ffffff !important;
+}
+
+/* Testimonial text colors */
+.testimonial-card .text-purple-100,
+.testimonial-card .text-purple-200 {
+    color: inherit !important;
+}
+
+/* Dark theme overrides */
+[data-theme="dark"] .service-card h3 {
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .service-card p,
+[data-theme="dark"] .service-card .text-purple-100,
+[data-theme="dark"] .service-card .text-purple-200 {
+    color: #9ca3af !important;
+}

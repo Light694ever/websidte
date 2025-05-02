@@ -1,5 +1,5 @@
-// Smooth scrolling for anchor links
-function initSmoothScroll() {
+// Smooth scroll functionality
+export const initSmoothScroll = () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -8,18 +8,28 @@ function initSmoothScroll() {
             });
         });
     });
-}
+};
 
-// Add shadow to header on scroll
-function initHeaderScroll() {
-    window.addEventListener('scroll', function() {
-        const header = document.querySelector('header');
-        if (window.scrollY > 50) {
-            header.classList.add('shadow-lg');
-        } else {
-            header.classList.remove('shadow-lg');
+// Header scroll functionality
+export const initHeaderScroll = () => {
+    const header = document.querySelector('header');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll <= 0) {
+            header.classList.remove('scroll-up');
+            return;
         }
-    });
-}
 
-export { initSmoothScroll, initHeaderScroll };
+        if (currentScroll > lastScroll && !header.classList.contains('scroll-down')) {
+            header.classList.remove('scroll-up');
+            header.classList.add('scroll-down');
+        } else if (currentScroll < lastScroll && header.classList.contains('scroll-down')) {
+            header.classList.remove('scroll-down');
+            header.classList.add('scroll-up');
+        }
+        lastScroll = currentScroll;
+    });
+};

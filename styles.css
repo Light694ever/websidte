@@ -1,0 +1,24 @@
+.lang-toggle {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.lang-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.lang-icon[data-active="true"] {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .lang-toggle {
+        margin: 1rem auto;
+    }
+}
