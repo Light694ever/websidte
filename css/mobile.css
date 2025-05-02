@@ -52,12 +52,11 @@
         right: 0;
         width: 80%;
         height: 100vh;
-        background-color: var(--bg-primary);
+        background-color: var(--bg-secondary);
         padding: 2rem;
         z-index: 1000;
         transform: translateX(100%);
         transition: transform 0.3s ease-in-out;
-        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
     }
 
     .mobile-menu.active {
@@ -167,48 +166,4 @@
 /* Burger Menu */
 .burger-menu {
     display: none;
-}
-
-@media (max-width: 640px) {
-    .burger-menu {
-        display: block;
-        width: 30px;
-        height: 24px;
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        cursor: pointer;
-        z-index: 1001;
-    }
-
-    .burger-menu span {
-        display: block;
-        position: absolute;
-        height: 3px;
-        width: 100%;
-        background: var(--text-primary);
-        border-radius: 3px;
-        opacity: 1;
-        left: 0;
-        transform: rotate(0deg);
-        transition: .25s ease-in-out;
-    }
-
-    .burger-menu span:nth-child(1) { top: 0; }
-    .burger-menu span:nth-child(2) { top: 10px; }
-    .burger-menu span:nth-child(3) { top: 20px; }
-
-    .burger-menu.active span:nth-child(1) {
-        top: 10px;
-        transform: rotate(45deg);
-    }
-
-    .burger-menu.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .burger-menu.active span:nth-child(3) {
-        top: 10px;
-        transform: rotate(-45deg);
-    }
 }
